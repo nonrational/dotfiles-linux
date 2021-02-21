@@ -1,0 +1,122 @@
+[user]
+    name = Alan Norton
+    email = git@nonration.al
+[github]
+    user = nonrational
+[core]
+    # Use custom `.gitignore` and `.gitattributes`
+    attributesfile = ~/.gitattributes
+    quotepath = false
+    excludesfile = ~/.gitignore_global
+
+    # Treat spaces before tabs and all kinds of trailing whitespace as an error
+    # [default] trailing-space: looks for spaces at the end of a line
+    # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+    whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+    # Make `git rebase` safer on macOS
+    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+    trustctime = false
+
+    # Prevent showing files whose names contain non-ASCII symbols as unversioned.
+    # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+    precomposeunicode = false
+[alias]
+    pp = "!git push || $(git push 2>&1 >/dev/null | tail -n2 | head -n1)"
+
+    bump = "commit --allow-empty -m'ci-bump'"
+
+    ci = commit -v
+    co = checkout
+
+    df = "diff --name-only"
+    dc = diff --cached
+
+    f = "fetch --tags --force --prune"
+    ri = "rebase -i"
+    rio = "!git f && git rebase -i origin/master"
+
+    head = !git r -1
+    hp = "!. ~/.githelpers && show_git_head"
+    r = !GIT_NO_PAGER=1 git l -20
+    ra = !git r --all
+    l = "!. ~/.githelpers && pretty_git_log"
+    la = !git l --all
+    b = "!. ~/.githelpers && pretty_git_branch"
+    bs = "!. ~/.githelpers && pretty_git_branch_sorted"
+    brr = branch --sort=-committerdate
+
+    lt = "!git tag | sort -n -t. -k1,1 -k2,2 -k3,3"
+    stag = "!git tag | sort -n -t. -k1,1 -k2,2 -k3,3 -k4,4"
+
+    amend = commit --amend
+    aa = add --all .
+    st = status
+    stp = status --porcelain
+
+    modified = "!git ls-files --modified"
+    deleted = "!git ls-files --deleted"
+    untracked = "!git ls-files --others --exclude-standard"
+
+    # ignore untracked files in this specific repo
+    is-it-just-me = "!$EDITOR .git/info/exclude"
+
+    # ignore changes to files that are never going to be committed
+    regard = update-index --no-assume-unchanged
+    disregard = update-index --assume-unchanged
+    dissed = !git ls-files -v | grep ^[a-z] || echo "None"
+
+    broom = "!. ~/.githelpers && delete_remoteless_branches_interactive"
+    spring-cleaning = "!. ~/.githelpers && delete_all_my_branches_interactive"
+
+    wtf = "!. ~/.githelpers && what_the_hell_just_happened"
+    nuke = "!git reset --hard HEAD && git clean -fd"
+
+    aww = "!. ~/.githelpers && add_wildcard"
+    uww = "!. ~/.githelpers && reset_wildcard"
+
+    sup = "!. ~/.githelpers && current_pulls_into_here"
+    super = "!. ~/.githelpers && current_pulls_into_here_with_colorful_status"
+
+[status]
+    relativePaths = true
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = true
+  pager = true
+[gist]
+    browse = true
+    private = true
+[hub]
+    protocol = https
+    user = nonrational
+[push]
+	default = simple
+[git-up "bundler"]
+	check = true
+[merge]
+    log = true
+    keepBackup = false;
+    tool = smerge
+    prompt = false
+[mergetool "smerge"]
+    cmd = smerge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+    keepTemporaries = false
+    trustExitCode = false
+    keepBackup = false
+    prompt = false
+[gc]
+	auto = 0
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[diff]
+	renameLimit = 999999
+[rebase]
+	instructionFormat = (%an <%ae>) %s
+[pull]
+	rebase = true

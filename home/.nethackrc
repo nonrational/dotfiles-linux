@@ -1,0 +1,20 @@
+
+OPTIONS=pettype:cat,hilite_pet,showrace
+OPTIONS=fruit:morsel of existential dread
+OPTIONS=autopickup,pickup_types:$!/="?
+OPTIONS=disclose:+iagcv
+OPTIONS=!cmdassist,!help,!legacy,!news,suppress_alert:3.4.3
+OPTIONS=autodig,prayconfirm,!lootabc
+OPTIONS=msg_window:reverse,msghistory:1000
+OPTIONS=lit_corridor,color,DECgraphics
+OPTIONS=showexp,showscore,time
+OPTIONS=runmode:teleport,!rest_on_space
+OPTIONS=number_pad:0,boulder:0
+OPTIONS=pickup_burden:unencumbered
+OPTIONS=sortloot:full
+OPTIONS=scores:10 top/3 around/own
+
+# turn ghosts and shades into 'X' - great with telepathy for bones detection
+# OPTIONS=monsters:abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@X'&;:~]
+
+OPTIONS=name:Laird
