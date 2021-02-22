@@ -116,11 +116,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
+EDITOR='vim'
+
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
-# eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
-
-source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
+. "/usr/share/autojump/autojump.sh"
